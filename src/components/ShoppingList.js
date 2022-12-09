@@ -14,9 +14,13 @@ function ShoppingList({ items }) {
         </select>
       </div>
       <ul className="Items">
-        {items.map((item) => (
-          <Item key={item.id} name={item.name} category={item.category} />
-        ))}
+        {items.map((item) => {
+          return selectedCategory === "All" 
+          ? <Item key={item.id} name={item.name} category={item.category} /> 
+          : (selectedCategory === item.category && <Item key={item.id} name={item.name} category={item.category} />)
+        }
+          
+        )}
       </ul>
     </div>
   );
